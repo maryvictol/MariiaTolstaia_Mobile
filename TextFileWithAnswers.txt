@@ -4,3 +4,13 @@
 
 6.	Connect a real device to Appium (describe required actions) and run tests.
 Are there any difference with run on emulator?
+To test on a real Android device, leave your configuration as it was when you set up Appium to work with the emulator and proceed as follows:
+    1. Connect your device to the server machine via USB.
+	2. On devices, which are version 4.2 and higher, to enable “USB Debugging” follow these steps:
+       - Settings > About Phone > Build number > Tap it 7 times to become developer
+       - Settings > Developer Options > USB Debugging
+	       Click ‘OK’ when the ‘Allow USB debugging’ pop-up shows up, after connecting the USB cable.
+	3. Check field "Device Name"
+	4. Close the Android emulator if it is still running
+	
+Real device faster than emulator
