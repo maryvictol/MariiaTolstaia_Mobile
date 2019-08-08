@@ -1,0 +1,6 @@
+5.	Modify existing tests to run on a real device. What should be changed?
+
+    Capability DEVICE_NAME should be changed.
+
+6.	Connect a real device to Appium (describe required actions) and run tests.
+Are there any difference with run on emulator?
