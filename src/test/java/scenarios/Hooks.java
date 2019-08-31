@@ -1,6 +1,5 @@
 package scenarios;
 
-import enums.Device;
 import enums.PropertyFile;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -14,12 +13,11 @@ public class Hooks extends DriverSetup {
     /**
      * Required variables will be initialized by inherited constructor
      *
-     * @param device       device using for testing
      * @param propertyFile property file depending on application type (native/web)
      * @throws IOException
      */
-    Hooks(Device device, PropertyFile propertyFile) throws IOException {
-        super(device, propertyFile);
+    Hooks(PropertyFile propertyFile) throws IOException {
+        super(propertyFile);
     }
 
     /**
@@ -42,6 +40,4 @@ public class Hooks extends DriverSetup {
     public void tearDown() throws Exception {
         driver().quit();
     }
-
-
 }

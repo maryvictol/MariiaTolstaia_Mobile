@@ -1,6 +1,5 @@
 package setup;
 
-import enums.Device;
 import enums.PropertyFile;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -28,18 +27,17 @@ public class DriverSetup extends TestProperties {
     protected String PACKAGE_NAME;
     protected String SITE_TITLE;
 
-    protected Device device;
+    protected String DEVICE;
 
     /**
      * Constructor initializes properties on driver creation     *
      *
-     * @param device       device using for testing
      * @param propertyFile property file depending on application type (native/web)
      * @throws IOException
      */
-    protected DriverSetup(Device device, PropertyFile propertyFile) throws IOException {
+    protected DriverSetup(PropertyFile propertyFile) throws IOException {
         super(propertyFile);
-        this.device = device;
+        DEVICE = getProperty("device");
         AUT = getProperty("aut");
         String t_sut = getProperty("sut");
         SUT = t_sut == null ? null : "http://" + t_sut;
@@ -61,7 +59,7 @@ public class DriverSetup extends TestProperties {
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (TEST_PLATFORM) {
             case "Android":
-                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device.toString());
+                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE);
                 browserName = "Chrome";
                 break;
             case "iOS":

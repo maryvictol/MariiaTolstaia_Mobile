@@ -10,7 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <apium.version>6.1.0</apium.version>
+        <apium.version>7.1.0</apium.version>
         <testng.version>6.14.3</testng.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -21,19 +21,18 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>${apium.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>7.1.0</version>
-            <scope>compile</scope>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -49,12 +48,12 @@
         </profile>
 
         <profile>
-            <id>NativeTest</id>
+            <id>WebTest</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.xml>src/test/resources/nativeTests.xml</suite.xml>
+                <suite.xml>src/test/resources/webTests.xml</suite.xml>
             </properties>
         </profile>
     </profiles>
@@ -68,6 +67,16 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.xml}</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
