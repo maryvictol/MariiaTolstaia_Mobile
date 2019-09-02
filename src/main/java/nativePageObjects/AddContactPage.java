@@ -3,16 +3,17 @@ package nativePageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import lombok.Getter;
+import org.openqa.selenium.support.PageFactory;
 
+import static nativePageObjects.BasePage.NAME_PACKAGE;
 import static org.testng.Assert.assertTrue;
 
 @Getter
-public class AddContactPage extends BasePage {
-    AppiumDriver driver;
-
+public class AddContactPage {
     public AddContactPage(AppiumDriver driver) {
-        super(driver);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     @AndroidFindBy(id = NAME_PACKAGE + "accountSpinner")

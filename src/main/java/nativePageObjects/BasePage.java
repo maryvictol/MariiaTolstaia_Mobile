@@ -13,12 +13,9 @@ import static org.testng.Assert.assertEquals;
 
 @Getter
 public class BasePage {
-    AppiumDriver driver;
-
     final static String NAME_PACKAGE = "com.example.android.contactmanager:id/";
 
     public BasePage(AppiumDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
