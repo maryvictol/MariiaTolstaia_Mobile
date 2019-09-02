@@ -23,12 +23,12 @@ public class WebTest extends Hooks {
     @Test(description = "Open website")
     public void simplestTest() throws Exception {
         driver().get(SUT);
-        checkStatus();
         driverWait().until(ExpectedConditions.urlToBe(SUT + "/"));
+        checkStatus();
         assertTrue(driver().getTitle().equalsIgnoreCase(SITE_TITLE),
                 "Site title not equals to expected.");
 
-        System.out.println("Site opening done");
+        System.out.println("Site " + SUT + " opening done");
     }
 
     /**
