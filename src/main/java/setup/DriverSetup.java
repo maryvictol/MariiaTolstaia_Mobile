@@ -27,7 +27,7 @@ public class DriverSetup extends TestProperties {
     protected String PACKAGE_NAME;
     protected String SITE_TITLE;
 
-    protected String DEVICE;
+    protected String DEVICE_NAME;
 
     /**
      * Constructor initializes properties on driver creation     *
@@ -37,7 +37,7 @@ public class DriverSetup extends TestProperties {
      */
     protected DriverSetup(PropertyFile propertyFile) throws IOException {
         super(propertyFile);
-        DEVICE = getProperty("device");
+        DEVICE_NAME = getProperty("devicename");
         AUT = getProperty("aut");
         String t_sut = getProperty("sut");
         SUT = t_sut == null ? null : "http://" + t_sut;
@@ -59,7 +59,7 @@ public class DriverSetup extends TestProperties {
         // Setup test platform: Android or iOS. Browser also depends on a platform.
         switch (TEST_PLATFORM) {
             case "Android":
-                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE);
+                capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
                 browserName = "Chrome";
                 break;
             case "iOS":
