@@ -8,7 +8,7 @@ import setup.DriverSetup;
 
 import java.io.IOException;
 
-@Test(groups = {"native", "web"})
+
 public class Hooks extends DriverSetup {
     /**
      * Required variables will be initialized by inherited constructor
@@ -26,7 +26,7 @@ public class Hooks extends DriverSetup {
      *
      * @throws Exception if Unknown mobile platform
      */
-    @BeforeSuite(description = "Prepare driver to run test(s)")
+    @BeforeSuite(groups = {"native", "web"}, description = "Prepare driver to run test(s)")
     public void setUp() throws Exception {
         prepareDriver();
     }
@@ -36,8 +36,18 @@ public class Hooks extends DriverSetup {
      *
      * @throws Exception
      */
-    @AfterSuite(description = "Close driver on all tests completion")
-    public void tearDown() throws Exception {
-        driver().quit();
+    @AfterSuite(groups = {"web"}, description = "Close driver on all tests completion")
+    public void tearDownWeb() throws Exception {
+        driver().close();
+    }
+
+    /**
+     * Closing driver on all tests completion.
+     *
+     * @throws Exception
+     */
+    @AfterSuite(groups = {"native"}, description = "Close driver on all tests completion")
+    public void tearDownNative() throws Exception {
+        driver().closeApp();
     }
 }

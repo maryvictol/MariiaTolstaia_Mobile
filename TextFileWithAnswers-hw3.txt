@@ -1,0 +1,14 @@
+1.	Change settings to run web test on a certain iOS device in mobile cloud.
+Run test with your changes. Did test pass?
+Passed.
+
+3.	 Run test with your changes. Did test pass?
+Passed.
+
+4.	Try to use autoLaunch capability with app as before instead of appPackage and appActivity.
+Does this approach work?
+org.openqa.selenium.WebDriverException:
+{"status":13,"value":{"message":"An unknown server-side error occurred while processing the command. Original error: The desired capabilities must include either an app, appPackage or browserName"},"sessionId":null} (WARNING: The server did not provide any stacktrace information)
+
+8.	What’s wrong with our code? How to fix/improve it? Implement your suggestions.
+
